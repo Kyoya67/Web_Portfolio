@@ -1,0 +1,9 @@
+/* .flexContainer {
+    composes: spaceBetween from 'styles/utils.module.css';
+} */
+
+.flexContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

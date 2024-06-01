@@ -1,0 +1,11 @@
+.default {
+    width: 92%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.large {
+    width: 92%;
+    max-width: 1711px;
+    margin: 0 auto;
+}
