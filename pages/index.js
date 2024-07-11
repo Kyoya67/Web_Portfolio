@@ -37,7 +37,7 @@ export default function Home() {
             <p>
               学部時代は会津大学で情報工学を学びました。卒論のテーマはブロックチェーンで、フルオンチェーンNFTをノーコードで開発できるwebアプリの開発を行いました。そのために、Next.js/Reactを学習中です。現在は情報科学芸術大学院大学（IAMAS）で、NFTアートにしかできない芸術的な表現方法を模索しています。
             </p>
-            <h2>My Skill Set</h2>
+            <h2>Skill Set</h2>
             <ul>
               <li>
                 <strong>Next.js</strong>
@@ -100,6 +100,7 @@ export default function Home() {
                 私はNFTの個展を開催し、独自のコントラクトで作成したNFTをポートフォリオに組み込みました。その結果、情報科学芸術大学院大学（IAMAS）というメディアアート専門の大学院に進学することができました。まだまだ成長の余地はありますが、常に新たな挑戦を続け、自分の目標を達成したいという強い意志を持っています
               </p>
             </Accordion>
+            <div style={{ marginBottom: "100px" }}></div>
           </PostBody>
         </TwoColumnMain>
       </TwoColumn>
