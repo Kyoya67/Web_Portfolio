@@ -1,0 +1,31 @@
+.flexContainer {
+    display: flex;
+    align-items: baseline;
+    gap: 1.25em;
+    color: var(--gray-50);
+}
+
+@media (min-width: 768px) {
+    .flexContainer {
+        flex-direction: column;
+    }
+}
+
+.heading {
+    font-size: var(--small-heading2);
+}
+
+.list {
+    display: flex;
+    align-items: baseline;
+    gap: 1.25em;
+    color: var(--gray-50);
+    font-size: var(--small-headding3);
+    gap: 0.75em;
+}
+
+@media (min-width: 768px) {
+    .list {
+        flex-direction: column;
+    }
+}
