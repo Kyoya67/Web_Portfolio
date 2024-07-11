@@ -3,9 +3,8 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     domains: ["raw.githubusercontent.com", "nxpclab.github.io", "github.com"],
-    unoptimized: true, // 画像最適化を無効にする
   },
-  // output: "export",
 };
 
+// module.exports の代わりに export default を使用します
 export default nextConfig;
