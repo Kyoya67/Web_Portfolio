@@ -9,6 +9,10 @@ const nextConfig = {
       "github.com",
     ],
   },
+  // Add the following output configuration
+  output: {
+    export: true,
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
