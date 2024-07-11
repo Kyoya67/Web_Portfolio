@@ -2,17 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: [
-      "images.microcms-assets.io",
-      "raw.githubusercontent.com",
-      "nxpclab.github.io",
-      "github.com",
-    ],
+    domains: ["raw.githubusercontent.com", "nxpclab.github.io", "github.com"],
   },
-  // Add the following output configuration
-  output: {
-    export: true,
-  },
+  // 修正：output を直接設定します
+  output: "export",
 };
 
-module.exports = nextConfig;
+// module.exports の代わりに export default を使用します
+export default nextConfig;
