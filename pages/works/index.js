@@ -5,6 +5,7 @@ import Image from "next/image";
 
 export default function Works() {
   const [ogpData, setOgpData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const links = [
     {
@@ -29,18 +30,30 @@ export default function Works() {
     },
   ];
 
+  const defaultImage = "about.jpg";
+
   useEffect(() => {
     async function fetchOgpData() {
+      setIsLoading(true);
       const fetchedData = await Promise.all(
         links.map(async (link) => {
-          const response = await fetch(
-            `/api/get-ogp?url=${encodeURIComponent(link.url)}`
-          );
-          const data = await response.json();
-          return { ...link, ogImage: data.ogImage || link.defaultImage };
+          try {
+            const response = await fetch(
+              `/api/get-ogp?url=${encodeURIComponent(link.url)}`
+            );
+            const data = await response.json();
+            return {
+              ...link,
+              ogImage: data.ogImage || link.defaultImage || defaultImage,
+            };
+          } catch (error) {
+            console.error(`Error fetching OGP data for ${link.url}:`, error);
+            return { ...link, ogImage: link.defaultImage || defaultImage };
+          }
         })
       );
       setOgpData(fetchedData);
+      setIsLoading(false);
     }
 
     fetchOgpData();
@@ -51,29 +64,34 @@ export default function Works() {
       <Meta pageTitle="Works" />
       <h1 style={{ marginTop: "30px" }}>Works</h1>
 
-      <div style={{ marginTop: "20px" }}>
-        <ul>
-          {ogpData.map((data, index) => (
-            <li key={index} style={{ marginBottom: "50px" }}>
-              <a href={data.url} target="_blank" rel="noopener noreferrer">
-                {data.ogImage && (
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <div style={{ marginTop: "20px" }}>
+          <ul>
+            {ogpData.map((data, index) => (
+              <li key={index} style={{ marginBottom: "50px" }}>
+                <a href={data.url} target="_blank" rel="noopener noreferrer">
                   <Image
                     src={data.ogImage}
                     alt={data.title}
                     layout="responsive"
-                    width={70}
-                    height={70}
+                    width={1200}
+                    height={630}
+                    placeholder="blur"
+                    blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNcwfC/HgAFfwI/r2nkvgAAAABJRU5ErkJggg=="
+                    loading="lazy"
                   />
-                )}
-                <p style={{ fontWeight: "bold", fontSize: "30px" }}>
-                  {data.title}
-                </p>
-                <p>{data.description}</p>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
+                  <p style={{ fontWeight: "bold", fontSize: "30px" }}>
+                    {data.title}
+                  </p>
+                  <p>{data.description}</p>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </Container>
   );
 }

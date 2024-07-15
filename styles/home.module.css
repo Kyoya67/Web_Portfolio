@@ -1,0 +1,16 @@
+.skillList {
+    padding-left: 0px;
+}
+
+.skillList ul {
+    padding-left: 0px;
+
+}
+
+.skillList li {
+    margin-bottom: 5px;
+}
+
+.skillList>li {
+    margin-bottom: 15px;
+}

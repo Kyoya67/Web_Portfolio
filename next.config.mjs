@@ -6,5 +6,4 @@ const nextConfig = {
   },
 };
 
-// module.exports の代わりに export default を使用します
 export default nextConfig;
